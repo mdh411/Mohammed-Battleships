@@ -1,8 +1,7 @@
 #pragma once
 
-#include "adaship.h"
+#include "adaShip.h"
 
-struct ShipData {
-	std::string shipName;
-	int shipSize;
+struct Settings {
+
 };

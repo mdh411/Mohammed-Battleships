@@ -136,7 +136,7 @@
   <ItemGroup>
     <ClInclude Include="adaship.h" />
     <ClInclude Include="board.h" />
-    <ClInclude Include="boardSect.h" />
+    <ClInclude Include="boardTile.h" />
     <ClInclude Include="fileHandler.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="settings.h" />

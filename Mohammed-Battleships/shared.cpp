@@ -1,4 +1,4 @@
-#include "adaship.h"
+#include "adaShip.h"
 
 // gets user input after displaying some options and a prompt
 std::string getOptions(std::vector<std::string> options, std::string question)
@@ -27,4 +27,24 @@ bool isNumber(std::string str) {
 
 int strToInt(std::string str, int initVal) {
     return isNumber(str) ? stoi(str) : initVal;
+}
+
+// trim leading white-spaces
+static std::string& ltrim(std::string& s) {
+    size_t startpos = s.find_first_not_of(" \t\r\n\v\f");
+    if (std::string::npos != startpos)
+    {
+        s = s.substr(startpos);
+    }
+    return s;
+}
+
+// trim trailing white-spaces
+static std::string& rtrim(std::string& s) {
+    size_t endpos = s.find_last_not_of(" \t\r\n\v\f");
+    if (std::string::npos != endpos)
+    {
+        s = s.substr(0, endpos + 1);
+    }
+    return s;
 }

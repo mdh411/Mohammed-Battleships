@@ -53,7 +53,7 @@
     <ClInclude Include="fileHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="boardSect.h">
+    <ClInclude Include="boardTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

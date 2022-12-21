@@ -2,7 +2,7 @@
 
 #include "adaShip.h"
 
-class BoardSect {
+class BoardTile {
 	bool empty = true;
 	Ship* currentShip;
 	bool hit = false;

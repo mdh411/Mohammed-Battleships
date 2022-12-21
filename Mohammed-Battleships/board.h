@@ -6,7 +6,7 @@ class Board {
 private:
 	int size;
 
-	std::vector<std::vector<BoardSect>> board;
+	std::vector<std::vector<BoardTile>> board;
 	std::vector<Ship*> ships;
 
 public:

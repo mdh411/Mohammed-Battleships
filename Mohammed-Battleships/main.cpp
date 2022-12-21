@@ -1,8 +1,6 @@
-#include "adaship.h"
-
+#include "adaShip.h"
 
 int main() {
 	//menu();
-	parseFromFile("./adaShipConfig.ini");
-	return 0;
+	fileParser("adaShipConfig.ini");
 }

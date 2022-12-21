@@ -1,9 +1,11 @@
 #pragma once // include guard: only include this .h once
 
-#include <algorithm> // <> to search wihin default directory
+// <> to search wihin default directory
+
 #include <fstream> // header file used to read csv file
+#include <algorithm> 
 #include <iomanip>
-#include <iostream>
+#include <iostream> // allow inputs and outputs
 #include <iterator>
 #include <regex>
 #include <sstream>
@@ -14,11 +16,12 @@
 #include <stdlib.h>
 #include <cstdlib>
 #include <ctype.h>
+#include <list>
 
 #include "menu.h" // double quotes to look within current directory
 #include "settings.h"
 #include "shared.h"
-#include "filehandler.h"
+#include "fileHandler.h"
 #include "ship.h"
-#include "boardSect.h"
+#include "boardTile.h"
 #include "board.h"
