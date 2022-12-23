@@ -1,4 +1,4 @@
-#include "adaShip.h"
+#include "adaship.h"
 
 void fileParser(std::string fileName) {
 	std::vector<std::string> linesOfConfigFile;

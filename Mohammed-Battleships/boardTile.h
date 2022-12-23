@@ -2,8 +2,11 @@
 
 #include "adaShip.h"
 
+class Ship;
+
 class BoardTile {
-	bool empty = true;
-	Ship* currentShip;
-	bool hit = false;
+public:
+	bool _empty = true;
+	Ship* _currentShip;
+	bool _hit = false;
 };

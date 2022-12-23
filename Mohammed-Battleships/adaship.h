@@ -19,8 +19,8 @@
 #include <list>
 
 #include "menu.h" // double quotes to look within current directory
-#include "settings.h"
 #include "shared.h"
+#include "constants.h"
 #include "fileHandler.h"
 #include "ship.h"
 #include "boardTile.h"

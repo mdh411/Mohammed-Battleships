@@ -127,19 +127,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="boardSect.cpp" />
+    <ClCompile Include="board.cpp" />
     <ClCompile Include="fileHandler.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shared.cpp" />
+    <ClCompile Include="ship.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="adaship.h" />
     <ClInclude Include="board.h" />
     <ClInclude Include="boardTile.h" />
+    <ClInclude Include="constants.h" />
     <ClInclude Include="fileHandler.h" />
     <ClInclude Include="menu.h" />
-    <ClInclude Include="settings.h" />
     <ClInclude Include="shared.h" />
     <ClInclude Include="ship.h" />
   </ItemGroup>

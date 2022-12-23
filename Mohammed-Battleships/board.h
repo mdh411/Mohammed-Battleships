@@ -2,16 +2,28 @@
 
 #include "adaShip.h"
 
+// handles the game boards
 class Board {
 private:
-	int size;
+	int _size; // board dimensions
+	int _nShips; // number of ships on board - want to customize later on
 
-	std::vector<std::vector<BoardTile>> board;
-	std::vector<Ship*> ships;
+	// using a 2d vector for board
+	std::vector<std::vector<BoardTile>> _board;
+	std::vector<Ship*> _ships;
+
+	void addShipToBoard(Ship* s);
 
 public:
-	Board(int size);
 
-	static const int MAX_SIZE = 80;
-	static const int MIN_SIZE = 5;
+	// default board constructor
+	Board(int size = DEFAULT_BOARDSIZE, int nShips = DEFAULT_NSHIPS);
+
+	int getBoardSize() const;
+	void setBoardSize(int size);
+
+	std::string displayBoard();
+	std::string displayHiddenBoard();
+	bool hit(std::vector<int> coords);
+	bool isFleetDestroyed();
 };

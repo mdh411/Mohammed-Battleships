@@ -1,4 +1,4 @@
-#include "adaShip.h"
+#include "adaship.h"
 
 // gets user input after displaying some options and a prompt
 std::string getOptions(std::vector<std::string> options, std::string question)
