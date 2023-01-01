@@ -1,6 +1,6 @@
 #pragma once
 
-#include "adaShip.h"
+#include "adaship.h"
 
 class Ship {
 private:

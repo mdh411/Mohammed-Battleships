@@ -1,21 +1,21 @@
 #include "adaship.h"
 
-// gets user input after displaying some options and a prompt
-std::string getOptions(std::vector<std::string> options, std::string question)
-{
-    std::string response = "";
-
-    std::cout << "\n\n";
-    if (!options.empty())
-    {
-        copy(options.begin(), options.end(),
-            std::ostream_iterator<std::string>(std::cout, "\n"));
-    }
-
-    std::cout << question;
-    getline(std::cin >> std::ws, response);
-    return response;
-}
+// gets user input after displaying some options and a prompt - did it differently in the end
+//std::string getOptions(std::vector<std::string> options, std::string question)
+//{
+//    std::string response = "";
+//
+//    std::cout << "\n\n";
+//    if (!options.empty())
+//    {
+//        copy(options.begin(), options.end(),
+//            std::ostream_iterator<std::string>(std::cout, "\n"));
+//    }
+//
+//    std::cout << question;
+//    getline(std::cin >> std::ws, response);
+//    return response;
+//}
 
 // takes a string param and uses istring stream to check if its a number
 bool isNumber(std::string str) {
@@ -47,4 +47,20 @@ static std::string& rtrim(std::string& s) {
         s = s.substr(0, endpos + 1);
     }
     return s;
+}
+
+// predicate function for case insensitive string comparison
+bool compare_pred(unsigned char a, unsigned char b) {
+    return std::tolower(a) == std::tolower(b);
+}
+
+// main compare function
+bool compare(std::string const& a, std::string const& b) {
+    if (a.length() == b.length()) {
+        return std::equal(b.begin(), b.end(),
+            a.begin(), compare_pred);
+    }
+    else {
+        return false;
+    }
 }

@@ -128,9 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="board.cpp" />
+    <ClCompile Include="CPUHandler.cpp" />
     <ClCompile Include="fileHandler.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="gameHandler.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="playerHandler.cpp" />
     <ClCompile Include="shared.cpp" />
     <ClCompile Include="ship.cpp" />
   </ItemGroup>
@@ -139,8 +143,12 @@
     <ClInclude Include="board.h" />
     <ClInclude Include="boardTile.h" />
     <ClInclude Include="constants.h" />
+    <ClInclude Include="CPUHandler.h" />
     <ClInclude Include="fileHandler.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="gameHandler.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="playerHandler.h" />
     <ClInclude Include="shared.h" />
     <ClInclude Include="ship.h" />
   </ItemGroup>

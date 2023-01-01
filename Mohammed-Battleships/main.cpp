@@ -1,8 +1,16 @@
 #include "adaship.h"
 
 int main() {
-	//menu();
 	//fileParser("adaShipConfig.ini");
-	Board* newBoard = new Board(10);
-	std::cout << newBoard->displayBoard();
+
+	try {
+		Game* battleShips = new Game(); //initiates a new game
+		battleShips->contGame(); // keeps game running till end
+	}
+	catch (std::string const* e) {
+		std::cout << *e << std::endl; // catch errors and display them
+		return 1;
+	}
+
+	return 0;
 }

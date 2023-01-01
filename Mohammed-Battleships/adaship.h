@@ -17,11 +17,19 @@
 #include <cstdlib>
 #include <ctype.h>
 #include <list>
+#include <map>
+#include <ctime>
+#include <random>
+#include <exception>
 
 #include "menu.h" // double quotes to look within current directory
 #include "shared.h"
 #include "constants.h"
-#include "fileHandler.h"
-#include "ship.h"
 #include "boardTile.h"
+#include "ship.h"
 #include "board.h"
+#include "game.h"
+#include "fileHandler.h"
+#include "gameHandler.h"
+#include "playerHandler.h"
+#include "CPUHandler.h"

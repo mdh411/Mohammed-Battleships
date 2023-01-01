@@ -30,13 +30,13 @@ void fileParser(std::string fileName) {
 
 		std::getline(singleLine, currentItem, delim); // get first part of the line
 		key = currentItem; // store it
-		if (key == "Board") {
+		if (compare(key, "BOARD")) {
 			std::getline(singleLine, currentItem, delim2);
 			val1 = currentItem;
 			std::getline(singleLine, currentItem, delim2);
 			val2 = currentItem;
 		}
-		else if (key == "Boat") {
+		else if (compare(key, "SHIP")) {
 			std::getline(singleLine, currentItem, delim3);
 			val1 = currentItem;
 			std::getline(singleLine, currentItem, delim3);
