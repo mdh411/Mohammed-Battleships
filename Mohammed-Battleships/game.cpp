@@ -145,7 +145,7 @@ void Game::runTurn() {
         char column = p2coords[1] + 'A';
         std::cout << "The CPU guessed ";
         std::cout << column;
-        std::cout << p2coords[0] << "." << std::endl;
+        std::cout << p2coords[0] + 1 << "." << std::endl;
 
         if (p2DestroyedShip) {
             std::cout << "The CPU sunk your " << p2Target->getName() << "!"
