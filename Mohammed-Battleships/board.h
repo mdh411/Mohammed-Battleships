@@ -25,12 +25,10 @@ public:
 	void setBoardSize(int size);
 
 	std::string displayBoard();
-	std::string
-		displayHiddenBoard(); // displays board but hides ships for gameplay purposes
+	std::string displayHiddenBoard(); // displays board but hides ships for gameplay purposes
 	bool isFleetDestroyed(); // check if all ships on a board are destroyed
 
 	bool hit(std::vector<int> coords);              // hits a coord on the board
 	Ship* getShipAtCoords(std::vector<int> coords); // gets the ship at a coord
-	BoardTile
-		getTileAtCoords(std::vector<int> coords); // similar to above but returns tile
+	BoardTile getTileAtCoords(std::vector<int> coords); // similar to above but returns tile
 };

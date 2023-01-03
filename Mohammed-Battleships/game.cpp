@@ -44,7 +44,22 @@ bool Game::setupGame() {
                 inputDone = true;
                 std::cout << "Game starting..." << std::endl;
                 break;
-            case 2:
+            case 2: {
+                std::cout << "Enter a valid board size (" << MIN_SIZE << "-" << MAX_SIZE << "):\n";
+                _size = getValidInput(MAX_SIZE, MIN_SIZE);
+
+                // Instantiate boards
+                _playerBoard = new Board(_size, _nShips);
+                _enemyBoard = new Board(_size, _nShips);
+
+                // Instantiate player handlers
+                _player = new PlayerHandler(_playerBoard, _enemyBoard);
+                _enemy = new CPUHandler(_playerBoard, _enemyBoard);
+                std::cout << "Successfully set grid to " << _size << "x" << _size << ".\n\n";
+                break;
+            }
+               
+            case 3:
                 throw new std::string("Thank you for playing...Bye.");
                 break;
             default:

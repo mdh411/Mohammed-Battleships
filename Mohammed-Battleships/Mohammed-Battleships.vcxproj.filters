@@ -88,5 +88,16 @@
     <None Include="adashipConfig.ini">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="README1.md">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\OneDrive - Deloitte %28O365D%29\Desktop\Battleships_UML.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\OneDrive - Deloitte (O365D)\Desktop\Battleships_SprintBoard_Trello.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

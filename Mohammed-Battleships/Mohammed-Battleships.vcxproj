@@ -154,6 +154,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="adashipConfig.ini" />
+    <None Include="README1.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\OneDrive - Deloitte %28O365D%29\Desktop\Battleships_UML.png" />
+    <Image Include="..\..\..\..\OneDrive - Deloitte (O365D)\Desktop\Battleships_SprintBoard_Trello.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
