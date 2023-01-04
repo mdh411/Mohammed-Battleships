@@ -200,76 +200,55 @@ bool Board::validatePos(Ship* s) {
 	int currentX = s->getCol();
 	int currentY = s->getRow();
 	int currentLen = s->getLength();
-	Ship tempShip = *s;
 
-	bool valid = true;
-
-	//check OoB first
-	if (tempAlign) {
-		if (currentX + currentLen > _size)
-			valid = false;
-	}
-	else {
-		if (currentY + currentLen > _size)
-			valid = false;
-	}
-
-	//Validate part 2 (collision)
-	bool valid2 = true;
-
-	//check collision against all other ship
-	for (int j = 0; j < _ships.size(); j++) {
-
-		Ship* other = _ships[j]; //the other ship being checked for
-
-		//if parallel
-		if (other->isVertical() == tempAlign) {
-			if (tempShip.isVertical()) { //horizontal
-				if (currentY == other->getRow()) {  //on the same row
-					if (currentX <= other->getCol() + other->getLength() - 1 &&
-						currentX + currentLen - 1 >= other->getCol()) { //and overlaping
-						valid2 = false; //that means they are colliding
-					}
-				}
-			}
-			else { //vertical
-				if (currentX == other->getCol()) {  //on the same column
-					if (currentY <= other->getRow() + other->getLength() - 1 && currentY + currentLen - 1 >= other->getRow()) {
-						valid2 = false; //then they are colliding
-					}
-				}
-			}
-		}
-		else { //if not parallel
-
-			//dumb check- checks every position for conflict.
-			//invalidates on first occasion. This is O(n^2) function
-			//is in need of a rewrite for efficiency, but works for now.
-			for (int ii = 0; ii < currentLen; ii++) {
-				for (int jj = 0; jj < other->getLength(); jj++) {
-					if (tempShip.isVertical()) {
-						if (currentX + ii == other->getCol() && currentY == other->getRow() + jj) {
-							valid2 = false;
-						}
-					}
-					else {
-						if (currentX == other->getCol() + jj && currentY + ii == other->getRow()) {
-							valid2 = false;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	//if one or the other is not valid, then return false,
-	//as they are conflicting.
-	if (!valid || !valid2) {
+	// Check if the ship is within the bounds of the board
+	if (tempAlign && currentX + currentLen > _size) {
 		return false;
 	}
-	else {
-		return true;
+	if (!tempAlign && currentY + currentLen > _size) {
+		return false;
 	}
+
+	// Check for collision with other ships
+	for (int j = 0; j < _ships.size(); j++) {
+		Ship* other = _ships[j];
+
+		// If the ships are parallel (both horizontal or both vertical)
+		if (other->isVertical() == tempAlign) {
+			if (tempAlign) { // Horizontal
+				if (currentY == other->getRow()) {  // On the same row
+					if (currentX <= other->getCol() + other->getLength() - 1 && currentX + currentLen - 1 >= other->getCol()) { // Overlapping
+						return false; // Collision
+					}
+				}
+			}
+			else { // Vertical
+				if (currentX == other->getCol()) {  // On the same column
+					if (currentY <= other->getRow() + other->getLength() - 1 && currentY + currentLen - 1 >= other->getRow()) {
+						return false; // Collision
+					}
+				}
+			}
+		}
+		else { // If the ships are not parallel (one is horizontal and the other is vertical)
+			// Check each position for conflict
+			for (int ii = 0; ii < currentLen; ii++) {
+				for (int jj = 0; jj < other->getLength(); jj++) {
+					if (tempAlign) { // Horizontal
+						if (currentX + ii == other->getCol() && currentY == other->getRow() + jj) {
+							return false; // Collision
+						}
+					}
+					else { // Vertical
+						if (currentX == other->getCol() + jj && currentY + ii == other->getRow()) {
+							return false; // Collision
+						}
+					}
+				}
+			}
+		}
+	}
+	return true; // No collision detected
 }
 
 void Board::addShipToBoard(Ship* s) {

@@ -96,7 +96,28 @@
     <Image Include="..\..\..\..\OneDrive - Deloitte %28O365D%29\Desktop\Battleships_UML.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\..\..\..\OneDrive - Deloitte (O365D)\Desktop\Battleships_SprintBoard_Trello.png">
+    <Image Include="..\..\..\..\OneDrive - Deloitte (O365D)\Desktop\Battleships_Trello.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Battleships_Story.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="fileParser_method.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="parseFromFile_method.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="fileParser2_method.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="displayBoard_method.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="board_constructor_randomPop.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="validateShips_method.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
