@@ -120,5 +120,17 @@
     <Image Include="validateShips_method.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="validatePosImproved_method.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="getNextAttack_method.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="getRndCoords_method.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="setDimsAndDifficulty_method.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

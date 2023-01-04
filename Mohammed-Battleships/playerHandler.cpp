@@ -91,3 +91,72 @@ std::vector<int> PlayerHandler::getNextAttack() {
 		}
 	}
 }
+
+
+// attempt at improving this method - slightly buggy so reverted to original
+// 
+//std::vector<int> PlayerHandler::getNextAttack() {
+//    std::vector<int> coords(2, -1);
+//
+//    while (true) {
+//        std::cout << "Please enter a coordinate pair to hit (A-J)(1-10): " << std::endl;
+//
+//        std::string input;
+//        if (!getline(std::cin, input)) {
+//            std::cout << "Invalid input, please try again." << std::endl;
+//            continue;
+//        }
+//
+//        // Check if player wants to quit
+//        if (input.size() == 1 && (input[0] == 'q' || input[0] == 'Q')) {
+//            std::cout << "Thanks for playing...Bye." << std::endl;
+//            break;
+//        }
+//
+//        // Check for valid input size
+//        if (input.size() > 3 || input.size() <= 1) {
+//            std::cout << "Invalid attack, make sure you use only 2 or 3 characters!" << std::endl;
+//            continue;
+//        }
+//
+//        // Check for valid coordinate format
+//        if (!isalpha(input[0]) || !isdigit(input[1]) || (input.size() == 3 && !isdigit(input[2]))) {
+//            std::cout << "Invalid attack, make sure you use the correct format." << std::endl;
+//            continue;
+//        }
+//
+//        int row, col;
+//        try {
+//            // Convert row coordinate to integer
+//            std::string num = input.substr(1);
+//            row = stoi(num) - 1;
+//        }
+//        catch (const std::exception& e) {
+//            std::cout << "Invalid attack, make sure the coordinate has a number." << std::endl;
+//            continue;
+//        }
+//
+//        // Convert column coordinate to integer
+//        col = letterToCoord(input[0]);
+//
+//        // Check if coordinates are within board bounds
+//        int bSize = _enemyBoard->getBoardSize();
+//        if (row < 0 || row >= bSize || col < 0 || col >= bSize) {
+//            std::cout << "Invalid attack, make sure the coordinate is in bounds." << std::endl;
+//            continue;
+//        }
+//
+//        // Check if tile has already been hit
+//        coords[0] = row;
+//        coords[1] = col;
+//        if (_enemyBoard->getTileAtCoords(coords)._hit) {
+//            std::cout << "Invalid attack, you've already hit that spot!" << std::endl;
+//            continue;
+//        }
+//
+//        return coords;
+//    }
+//
+//    // Return default value if player wants to quit
+//    return coords;
+//}

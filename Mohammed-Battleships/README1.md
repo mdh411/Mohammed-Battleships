@@ -202,6 +202,145 @@ I solved the inefficiency in the validatePos method by doing the following:
 _**The improved code can be seen below:**_
 ![improved ship Validation](validatePosImproved_method.png)
 
+_**Get Player's Next Attack**_
+
+![get attack](getNextAttack_method.png)
+
+I then created a robust method that deals with a variety of inputs (good and bad) from the user in terms of attacking the enemy board.
+It also allows the user flexibility to quit at any point.
+However my first solution had a few challenges:
+
+* Difficult to read due to deep nesting
+* Inconsistent error handling - if stoi throws an exception, the code will catch it and print an error message, but if getline returns false, the code will simply print an error message without catching an exception. This can make the code harder to debug and maintain.
+* The code uses the throw statement to quit the game, which is not a recommended way to handle quitting in C++. It would be better to use a loop control statement (such as break) or a function return value to exit the loop and the function.
+
+_**Attempt at improved version:**_
+![improved Attack Logic](attackLogicImproved_method.png)
+
+I attempted to refactor the code to improve some of these bad practices:
+* Used 'while' loop and 'continue' statements to repeatedly prompt the player for a coordinate until a valid one is entered.
+* Handles quitting better - using a break statement to exit the loop and the function.
+* input validation checks have been simplified and made more user-friendly, and exceptions are now consistently caught and handled.
+ 
+ The overall structure of the code is also much simpler and easier to follow.
+
+ Although this solution is cleaner, it resulted in a minor bug when I tried to quit the program instead of attack so I reverted to the original method. I have kept the
+ attempt at improvement because I believe it still has merit.
 
 
-## Evaluation
+_**Getting random Attack Coords**_
+![get random coords](getRndCoords_method.png)
+
+The CPUHandler is derived from the 'GameHandler' class. It has a method 'getNextAttack' which uses a helper function ('getRndCoords')
+to return a random set of coords for the CPU to attack the enemy board.
+My initial approach to a random CPU attack was to just keep on picking random x and y coords until
+one that is not yet hit is selected. However, this did not seem very efficient because when the board is mostly hit, it would
+become very time-consuming trying to find a coord that is not hit.
+
+_**Improving random Attack Coords**_
+![improved get random coords](getRndCoordsImproved_method.png)
+
+In the improved iteration, a nested loop is used to  iterate through all of the tiles on the enemy board. The outer loop is using the variable i to iterate through the rows of the board,
+and the inner loop is using the variable j to iterate through the columns of the board.
+
+This section is modifying the loop variables i and j in order to "wrap around" to the beginning of the board when the end is reached, so that the loop can continue to iterate through 
+all of the tiles on the board. For example, when j reaches the last column of the board (gSize - 1), it is reset to -1 so that the inner loop will start again at the first column of the board on the next iteration. 
+Similarly, when i reaches the last row of the board, it is reset to -1 so that the outer loop will start again at the first row of the board on the next iteration.
+The latter part where j == starty - 1 and i == startx - 1 are similar, but they are resetting the loop variables to bSize instead of -1. This causes the loops to continue iterating until they reach the starting position again, 
+rather than wrapping around to the beginning of the board.
+
+### Final Phase - Additional features
+
+In order to add greater flexibility for the user (as well as to increase the complexity of my game), I added two customization features in the final phase of development:
+
+1. Ability to set board dimensions
+2. Ability to set CPU difficulty
+
+**Game Class**
+
+Both of these are primarily controlled by the Game class.
+
+This class represents the game itself. It has member variables for storing pointers to Board objects for the player's board and the enemy board, and pointers to GameHandler objects for the player and the enemy. 
+It also has member functions for setting up the game, running the game, and displaying the game boards. It also has a 'runTurn' function which handles a single turn of the game.
+
+The program's main function instantiates a new Game and then proceeds to keep the game running on a loop via the contGame method.
+Both lines are in a try catch block in case any errors occur when trying to run it.
+
+The 'Game' class constructor instantiates:
+* Player board
+* Enemy board
+* Player Handler
+* Enemy Handler
+
+The contGame() method keeps the game running until it enters a finished state.
+If the game is not finished, the game first enters setup mode. Here the user can select a menu option to proceed with:
+
+1. Player Vs CPU
+2. Set Board Dimensions
+3. Set Difficulty
+4. Quit
+
+_**Setting Board Dimensions**_
+![Set Dimensions](setDimsAndDifficulty_method.png)
+
+I designed a setupGame method with a switch statement that has the potential to be expanded and eventually provide many more customisations options.
+If the user selects case '2', they are given the range of valid dimensions and are able to set the board to a valid size to then play on. I also added appropriate error handling to only allow values
+within the acceptable range. This is currently limited to 25 as a maximum because of difficulties with the X axis headers. I used the ASCII codes to define the column headers but this does not work
+as I desired after 'Z'.
+
+_**Setting CPU Difficulty**_
+
+The above snippet also shows how I allowed the user to configure one of three difficulty levels:
+1. Easy (100% random attacks)
+2. Normal (50% Random & 50% Hard mode attacks)
+3. Hard (100% hard mode attacks)
+
+![Set Difficulty](setCPUDifficulty_method.png)
+
+* setDifficulty() - sets the difficulty of the game as long as it is between 1 & 3
+* getNextAttack()
+    * if difficulty set to 3, CPU will use 'semi-intelligent' attacking (aka hard mode)
+    * if difficulty set to 2, 50/50 chance of hard mode or random attacks
+    * if difficulty set to 1, completely random attacks
+
+The getHardCoords() method returns the coordinates of a hard attack for the computer player. It does this by first creating a list of coordinates that are adjacent to tiles that the computer player has previously hit.
+If there are any coordinates in this list, the function returns the first one. If the list is empty, the function returns a random set of coordinates instead.
+
+## Summary
+
+>Pros:
+
+* It seemed daunting at first but, after decomposing the challenge into smaller epics and manageable stories I was able to tackle it using an agile approach.
+* Regularity and thoroughness in testing allowed for a good level of robustness within my code.
+* OOP approach allowed for greater code use
+* Very modular structure and good separation of concerns - e.g., each class was separated into its own file.
+* Use of advanced techniques: State Machine Pattern, abstraction, inheritance
+
+> To improve
+
+As well as the already mentioned improvements, there are a number of things I could improve in future:
+* Some logic is overly complex and inefficient
+    * e.g., getHardCoords() method in CPUHandler.cpp used a nested loop to iterate through the entire game board and check each tile, which could potentially be inefficient if the board is large.
+* Memory Management:
+    * The Game class has member variables _playerBoard, _enemyBoard, _player, and _enemy which are dynamically allocated using new, but there is no corresponding delete statement to free up the memory when it is no longer needed. 
+    This can lead to memory leaks. To fix this, I could have used smart pointers, such as std::unique_ptr, to manage the memory automatically.
+* Exception Handling:
+    * In some areas, the code uses raw pointers for exceptions and throws them as strings. However, it is generally a better practice to throw exceptions as objects, so that they can provide more information about the error and the context in which it occurred. 
+    I could have created a custom exception class or use one of the standard exception classes in the std library, such as std::runtime_error or std::invalid_argument.
+* Organisation:
+    * The Game class has a large number of responsibilities, including handling user input, managing the game state, and interacting with other classes. It might have been a good idea to split up these responsibilities into smaller, more focused classes to make the code 
+    more modular and easier to understand. For example, I could have created a separate class for managing the game menu and user input, and another class for managing the game loop and game state.
+* Duplication: 
+    * As per DRY principles, it is better to avoid code repetition. The setupGame function has a block of code that instantiates the _playerBoard, _enemyBoard, _player, and _enemy objects. This code is also present in the case 2 block of the switch statement. 
+    It would be better to move this code out of the switch statement and into a separate function, so that it can be called from both places without duplication.
+* I also wanted to develop the game further by adding more features
+    * e.g., player v player
+    * set number of ships
+    * Salvo version
+    * Hidden mine version
+
+Overall, I thoroughly enjoyed this project and the opportunity to tackle some real challenges. In future, I will look to work on the aforementioned improvements and hopefully one day achieve a fully fledged Battleships game with all the bells and whistles.
+
+
+Created by Mohammed Hussain
+04/01/2023

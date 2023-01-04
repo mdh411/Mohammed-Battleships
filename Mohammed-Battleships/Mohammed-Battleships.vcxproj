@@ -164,7 +164,11 @@
     <Image Include="displayBoard_method.png" />
     <Image Include="fileParser2_method.png" />
     <Image Include="fileParser_method.png" />
+    <Image Include="getNextAttack_method.png" />
+    <Image Include="getRndCoords_method.png" />
     <Image Include="parseFromFile_method.png" />
+    <Image Include="setDimsAndDifficulty_method.png" />
+    <Image Include="validatePosImproved_method.png" />
     <Image Include="validateShips_method.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

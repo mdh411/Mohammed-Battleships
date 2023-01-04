@@ -16,5 +16,5 @@ const std::string openingMessage =
 "\nThe game is won when all of the opponent's fleet is destroyed"
 "\nGood Luck!!!\n";
 
-const int menuOptions = 3;
-const std::string menuStrings[menuOptions] = { "Player Vs CPU", "Set Board Dimensions", "Quit" };
+const int menuOptions = 4;
+const std::string menuStrings[menuOptions] = { "Player Vs CPU", "Set Board Dimensions", "Set Difficulty", "Quit" };

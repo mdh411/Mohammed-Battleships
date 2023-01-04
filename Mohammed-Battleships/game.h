@@ -12,6 +12,7 @@ private:
 
 	void runTurn();
 
+	int _difficulty = 0;
 	int _nTurn = 0;
 	int _size = DEFAULT_BOARDSIZE;
 	int _nShips = DEFAULT_NSHIPS;
